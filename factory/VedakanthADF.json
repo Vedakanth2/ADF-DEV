@@ -1,0 +1,9 @@
+{
+	"name": "VedakanthADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2be453f8-2065-4f13-8a3b-a1857a719a2a",
+		"tenantId": "84c7065e-b3af-43b2-805d-5aa22453e9cb"
+	}
+}
