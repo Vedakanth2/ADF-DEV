@@ -26,6 +26,10 @@
 					"method": "POST",
 					"headers": {
 						"Content-Type": "application/JSON"
+					},
+					"body": {
+						"value": "{\n    \"pipeline\":\"@{pipeline().Pipeline}\"\n    \"error\":\"@{activity('Copy data1').error.message\"\n}",
+						"type": "Expression"
 					}
 				}
 			},
@@ -47,6 +51,7 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFileName": "*.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -82,7 +87,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					}
 				]
