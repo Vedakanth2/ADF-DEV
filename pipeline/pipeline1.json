@@ -1,0 +1,54 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@and(equals(pipeline().parameters.uwantnotification,'yes'),equals(pipeline().parameters.emailnotification,'yes'))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Web1",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": true,
+								"secureInput": true
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "https://email2adf.azurewebsites.net:443/api/email/triggers/manual/invoke?api-version=2022-05-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=2R5gfEfX3DMq5TloqbCZQCggEbgibqsH3XyBUxKAfYs",
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"body": {
+									"value": "{\n    \"pipeline\":\"@{pipeline().Pipeline}\",\n    \"runid\":\"@{pipeline().RunId}\n}",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"uwantnotification": {
+				"type": "string"
+			},
+			"emailnotification": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
