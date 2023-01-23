@@ -27,14 +27,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"uwantnotification": {
-				"type": "string"
-			},
-			"emailnotification": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
