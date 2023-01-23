@@ -23,9 +23,6 @@
 					"body": {
 						"value": "{\n    \"pipeline\":\"@{pipeline().Pipeline}\",\n    \"runid\":\"@{pipeline().RunId}\"\n}",
 						"type": "Expression"
-					},
-					"authentication": {
-						"type": "Basic"
 					}
 				}
 			}
