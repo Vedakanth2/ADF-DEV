@@ -1,5 +1,5 @@
 {
-	"name": "pipeline3",
+	"name": "prodtononprod",
 	"properties": {
 		"activities": [
 			{
@@ -64,7 +64,14 @@
 			{
 				"name": "Script1",
 				"type": "Script",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -73,12 +80,48 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
 				"typeProperties": {
-					"scripts": [],
+					"scripts": [
+						{
+							"parameters": [
+								{
+									"name": "srcfile",
+									"type": "String",
+									"value": {
+										"value": "@pipeline().parameters.srcfile",
+										"type": "Expression"
+									}
+								},
+								{
+									"name": "pipeline",
+									"type": "String",
+									"value": {
+										"value": "@pipeline().Pipeline",
+										"type": "Expression"
+									}
+								}
+							],
+							"type": "NonQuery",
+							"text": "insert into logdata (src_filename, pipelinename) values ( @srcfile, @pipeline)"
+						}
+					],
 					"scriptBlockExecutionTimeout": "02:00:00"
 				}
 			}
 		],
+		"parameters": {
+			"srcfile": {
+				"type": "string",
+				"defaultValue": "/sampledata/input/cars.csv"
+			},
+			"pipeline": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
