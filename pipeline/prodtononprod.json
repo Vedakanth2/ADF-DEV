@@ -94,7 +94,8 @@
 									"value": {
 										"value": "@pipeline().parameters.srcfile",
 										"type": "Expression"
-									}
+									},
+									"direction": "Input"
 								},
 								{
 									"name": "pipeline",
@@ -102,11 +103,12 @@
 									"value": {
 										"value": "@pipeline().Pipeline",
 										"type": "Expression"
-									}
+									},
+									"direction": "Input"
 								}
 							],
 							"type": "NonQuery",
-							"text": "insert into logdata (src_filename, pipelinename) values ( @srcfile, @pipeline)"
+							"text": "insert into logdata  values ( @srcfile, @pipeline)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
