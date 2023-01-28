@@ -61,7 +61,7 @@
 					{
 						"activity": "Filter1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
