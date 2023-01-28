@@ -49,25 +49,9 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@contains(item().name,'cars')",
+						"value": "@contains(item().name,'Cars')",
 						"type": "Expression"
 					}
-				}
-			},
-			{
-				"name": "Wait1",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "Filter1",
-						"dependencyConditions": [
-							"Failed"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
 				}
 			}
 		],
