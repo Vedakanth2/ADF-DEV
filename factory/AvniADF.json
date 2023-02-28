@@ -1,0 +1,9 @@
+{
+	"name": "AvniADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "476b1d00-0008-44b2-b2b7-41030f330e85",
+		"tenantId": "aa1d8784-ccb8-46dc-954b-eccf909dd5ef"
+	}
+}
